@@ -1,0 +1,48 @@
+# Classe base para os diferentes canais de comunicação
+class CanalComunicacao:
+    def enviar_mensagem(self, mensagem):
+        pass
+
+# Implementações para cada canal de comunicação
+class WhatsApp(CanalComunicacao):
+    def enviar_mensagem(self, mensagem):
+        # Lógica para enviar mensagem via WhatsApp
+        print(f"Enviando mensagem via WhatsApp: {mensagem}")
+
+class Telegram(CanalComunicacao):
+    def enviar_mensagem(self, mensagem):
+        # Lógica para enviar mensagem via Telegram
+        print(f"Enviando mensagem via Telegram: {mensagem}")
+
+class Facebook(CanalComunicacao):
+    def enviar_mensagem(self, mensagem):
+        # Lógica para enviar mensagem via Facebook
+        print(f"Enviando mensagem via Facebook: {mensagem}")
+
+class Instagram(CanalComunicacao):
+    def enviar_mensagem(self, mensagem):
+        # Lógica para enviar mensagem via Instagram
+        print(f"Enviando mensagem via Instagram: {mensagem}")
+
+# Classe para o Chatbot que utiliza os diferentes canais de comunicação
+class MeuChatbot:
+    def __init__(self):
+        self.canais = {
+            'whatsapp': WhatsApp(),
+            'telegram': Telegram(),
+            'facebook': Facebook(),
+            'instagram': Instagram()
+        }
+
+    def enviar_mensagem_para_canal(self, canal, mensagem):
+        if canal in self.canais:
+            self.canais[canal].enviar_mensagem(mensagem)
+        else:
+            print("Canal de comunicação não suportado.")
+
+# Exemplo de uso
+chatbot = MeuChatbot()
+chatbot.enviar_mensagem_para_canal('whatsapp', 'Olá! Esta é uma mensagem via WhatsApp.')
+chatbot.enviar_mensagem_para_canal('telegram', 'Olá! Esta é uma mensagem via Telegram.')
+chatbot.enviar_mensagem_para_canal('facebook', 'Olá! Esta é uma mensagem via Facebook.')
+chatbot.enviar_mensagem_para_canal('instagram', 'Olá! Esta é uma mensagem via Instagram.')
